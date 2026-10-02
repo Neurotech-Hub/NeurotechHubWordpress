@@ -93,24 +93,56 @@
     transform: translateY(-0.25em) rotate(45deg);
   }
 
+  /* Floating card centred under its parent, after publichealth.washu.edu. */
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul {
-    top: 100%;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    min-width: 200px;
+    padding: 8px;
     background: #fff;
-    border: 1px solid #e9e9e9;
-    border-top: 0;
-    border-radius: 0 0 var(--nth-radius) var(--nth-radius);
-    box-shadow: var(--nth-shadow);
-    padding: 0;
-    overflow: hidden;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Notch pointing at the parent item. */
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 3px 0 0 0;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  /* Invisible bridge over the gap so the hover-driven menu stays open on the way down. */
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item {
-    background: #fff;
+    position: relative;
+    z-index: 1;
+    background: transparent;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link {
+    padding: 8px 12px;
     color: var(--nth-ink);
-    border-color: #e9e9e9;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 0;
+    border-radius: var(--nth-radius);
     transition: color 0.15s ease, background-color 0.15s ease;
   }
 
