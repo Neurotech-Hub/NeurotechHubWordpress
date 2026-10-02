@@ -98,6 +98,8 @@
     border-top: 0;
     border-radius: 0 0 var(--nth-radius) var(--nth-radius);
     box-shadow: var(--nth-shadow);
+    padding: 0;
+    overflow: hidden;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item {
