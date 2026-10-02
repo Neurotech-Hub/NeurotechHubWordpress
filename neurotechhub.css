@@ -1,6 +1,6 @@
 /* Neurotech Hub custom styles for https://neurotechhub.wustl.edu/ */
 
 /* Load test: a visible marker so it's obvious when this file is applied. */
-body {
-  border-top: 4px solid #a51417;
+#page {
+  outline: 10px solid red !important;
 }
