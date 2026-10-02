@@ -43,7 +43,7 @@
 @media screen and (min-width: 56.25em) {
   .washu-main-menu-wrapper {
     background-color: #fff;
-    border-top: 1px solid #e9e9e9;
+    padding: 6px 0;
   }
 
   /* Must stay shrink-to-fit: the theme's priority-nav script sums child widths to decide overflow. */
@@ -60,6 +60,7 @@
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a.menu-item-link {
+    padding: 14px 18px;
     color: var(--nth-ink);
     font-size: 1rem;
     font-weight: 600;
@@ -93,6 +94,7 @@
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul {
+    top: 100%;
     background: #fff;
     border: 1px solid #e9e9e9;
     border-top: 0;
@@ -162,15 +164,17 @@
     text-decoration: none;
   }
 
-  /* Store sits at the top level as the menu's call to action. */
+  /* Store is lifted into the site-title row as a call to action. Absolute positioning keeps it
+     out of the widths the theme's priority-nav script measures. */
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(> a[href$="/store/"]) {
-    margin-left: 12px;
-    display: flex;
-    align-items: center;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 31px);
+    margin: 0;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a[href$="/store/"] {
-    padding: 8px 18px;
+    padding: 10px 22px;
     color: #fff;
     background: var(--nth-red);
     border-radius: var(--nth-radius);
