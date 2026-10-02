@@ -37,6 +37,116 @@
   letter-spacing: normal;
 }
 
+/* ---------- Site-wide: Formidable forms ---------- */
+
+.frm_forms {
+  padding: 32px;
+  background: var(--nth-surface);
+  border: 1px solid var(--nth-rule);
+  border-top: 4px solid var(--nth-red);
+  border-radius: var(--nth-radius);
+}
+
+.frm_forms .frm_form_fields {
+  margin-bottom: 0;
+}
+
+.frm_forms input[type="text"],
+.frm_forms input[type="email"],
+.frm_forms input[type="number"],
+.frm_forms input[type="tel"],
+.frm_forms input[type="url"],
+.frm_forms select,
+.frm_forms textarea {
+  background: #fff;
+  border: 1px solid var(--nth-rule);
+  border-radius: var(--nth-radius);
+}
+
+.frm_forms input:focus,
+.frm_forms select:focus,
+.frm_forms textarea:focus {
+  border-color: var(--nth-red);
+  outline: 2px solid var(--nth-red-tint);
+}
+
+.frm_forms .frm_dropzone {
+  padding: 20px;
+  background: #fff;
+  border: 1px dashed var(--nth-rule);
+  border-radius: var(--nth-radius);
+}
+
+/* Fallback upload state (Dropzone not initialised): Formidable hides .frm_upload_icon here,
+   but its current icon is an SVG without that class. */
+.frm_forms .frm_dropzone_disabled {
+  text-align: left;
+}
+
+.frm_forms .frm_dropzone_disabled .frm-svg-icon {
+  display: none;
+}
+
+.frm_forms .frm_dropzone .frm_small_text p {
+  margin: 8px 0 0;
+}
+
+.frm_forms input[type="file"] {
+  color: var(--nth-ink);
+}
+
+.frm_forms input[type="file"]::file-selector-button {
+  margin-right: 12px;
+  padding: 8px 16px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--nth-ink);
+  background: var(--nth-surface);
+  border: 1px solid var(--nth-rule);
+  border-radius: var(--nth-radius);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.frm_forms input[type="file"]::file-selector-button:hover {
+  color: var(--nth-red);
+  border-color: var(--nth-red);
+}
+
+/* An inline site style zeroes this span's font-size and its ::after replacement is invalid CSS;
+   the extra .frm_forms outranks it because that style loads after this file. */
+.frm_forms .frm_form_field.form-field.frm_required_field .frm_primary_label span.frm_required {
+  font-size: inherit;
+}
+
+.frm_forms .frm_single_product_label {
+  font-weight: 600;
+  color: var(--nth-ink);
+}
+
+.frm_forms .frm_total_formatted {
+  font-weight: 600;
+  color: var(--nth-red);
+}
+
+.frm_forms .frm_button_submit {
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.frm_forms .frm_button_submit:hover,
+.frm_forms .frm_button_submit:focus {
+  background: var(--nth-red-bright);
+  border-color: var(--nth-red-bright);
+}
+
+@media (max-width: 640px) {
+  .frm_forms {
+    padding: 20px;
+  }
+}
+
 /* ---------- Site-wide: main menu (desktop) ---------- */
 
 /* Matches the theme's desktop menu breakpoint; the mobile menu is untouched. */
@@ -506,71 +616,4 @@ body.single-items #buy {
   margin-top: 2.5em;
   padding-top: 0.75em;
   border-top: 1px solid var(--nth-rule);
-}
-
-/* Form panel styles are shared with the home page newsletter signup. */
-body.single-items .frm_forms,
-body.home .frm_forms {
-  padding: 32px;
-  background: var(--nth-surface);
-  border: 1px solid var(--nth-rule);
-  border-top: 4px solid var(--nth-red);
-  border-radius: var(--nth-radius);
-}
-
-body.single-items .frm_forms .frm_form_fields,
-body.home .frm_forms .frm_form_fields {
-  margin-bottom: 0;
-}
-
-body.single-items .frm_forms input[type="text"],
-body.single-items .frm_forms input[type="email"],
-body.single-items .frm_forms input[type="number"],
-body.single-items .frm_forms select,
-body.single-items .frm_forms textarea,
-body.home .frm_forms input[type="text"],
-body.home .frm_forms input[type="email"] {
-  background: #fff;
-  border: 1px solid var(--nth-rule);
-  border-radius: var(--nth-radius);
-}
-
-body.single-items .frm_forms input:focus,
-body.single-items .frm_forms select:focus,
-body.single-items .frm_forms textarea:focus,
-body.home .frm_forms input:focus {
-  border-color: var(--nth-red);
-  outline: 2px solid var(--nth-red-tint);
-}
-
-body.single-items .frm_single_product_label {
-  font-weight: 600;
-  color: var(--nth-ink);
-}
-
-body.single-items .frm_total_formatted {
-  font-weight: 600;
-  color: var(--nth-red);
-}
-
-body.single-items .frm_button_submit,
-body.home .frm_button_submit {
-  padding: 12px 32px;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-body.single-items .frm_button_submit:hover,
-body.single-items .frm_button_submit:focus,
-body.home .frm_button_submit:hover,
-body.home .frm_button_submit:focus {
-  background: var(--nth-red-bright);
-  border-color: var(--nth-red-bright);
-}
-
-@media (max-width: 640px) {
-  body.single-items .frm_forms,
-  body.home .frm_forms {
-    padding: 20px;
-  }
 }
