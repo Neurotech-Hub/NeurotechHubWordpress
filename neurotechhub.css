@@ -3,4 +3,5 @@
 /* Load test: a visible marker so it's obvious when this file is applied. */
 #page {
   outline: 10px solid red !important;
+  outline-offset: -10px;
 }
