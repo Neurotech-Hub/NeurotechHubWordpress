@@ -250,7 +250,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: nth-shimmer 7s ease-in-out 2s infinite;
+    animation: nth-shimmer 12s ease-in-out 2s infinite;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:hover > a[href$="/work-with-us/"],
@@ -267,7 +267,7 @@
     background-position: 100% 0;
   }
 
-  15%,
+  25%,
   100% {
     background-position: 0% 0;
   }
