@@ -1,7 +1,11 @@
 /* Neurotech Hub custom styles for https://neurotechhub.wustl.edu/ */
 
+/* WashU Medicine's Adobe Fonts kit (IvyPresto Headline); must stay the first rule. */
+@import url("https://use.typekit.net/mav2zlt.css");
+
 /* Brand tokens: values taken from the wutheme_chauvenet theme. */
 :root {
+  --nth-serif: "ivypresto-headline", "Libre Baskerville", Georgia, serif;
   --nth-red: #a51417;
   --nth-red-bright: #d01c29;
   --nth-red-tint: #f8ecec;
@@ -21,6 +25,18 @@
   border-radius: var(--nth-radius);
 }
 
+/* ---------- Site-wide: headings ---------- */
+
+.page-header h1.page-title,
+.entry-header h1.entry-title,
+.page-content > h2.wp-block-heading,
+.entry-content > h2.wp-block-heading,
+.washu-ppi-body-copy > h2.wp-block-heading {
+  font-family: var(--nth-serif);
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
 /* ---------- Site-wide: main menu (desktop) ---------- */
 
 /* Matches the theme's desktop menu breakpoint; the mobile menu is untouched. */
@@ -30,10 +46,10 @@
     border-top: 1px solid #e9e9e9;
   }
 
+  /* Must stay shrink-to-fit: the theme's priority-nav script sums child widths to decide overflow. */
   .washu-main-menu-wrapper .washu-main-menu-list {
-    display: flex;
+    display: inline-flex;
     align-items: stretch;
-    padding-right: 54px;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item,
@@ -146,7 +162,7 @@
 
   /* Store sits at the top level as the menu's call to action. */
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(> a[href$="/store/"]) {
-    margin-left: auto;
+    margin-left: 12px;
     display: flex;
     align-items: center;
   }
