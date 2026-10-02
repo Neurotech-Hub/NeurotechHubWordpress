@@ -26,57 +26,155 @@
 /* Matches the theme's desktop menu breakpoint; the mobile menu is untouched. */
 @media screen and (min-width: 56.25em) {
   .washu-main-menu-wrapper {
-    box-shadow: inset 0 -2px 0 var(--nth-red);
+    background-color: #fff;
+    border-top: 1px solid #e9e9e9;
   }
 
-  .washu-main-menu-wrapper .current-page {
+  .washu-main-menu-wrapper .washu-main-menu-list {
+    display: flex;
+    align-items: stretch;
+    padding-right: 54px;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:hover,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item.has-focus {
+    background: transparent;
+    border-top-color: transparent;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a.menu-item-link {
+    color: var(--nth-ink);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
     text-decoration: none;
+    transition: color 0.15s ease;
   }
 
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 3px;
-    background: var(--nth-red-bright);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.25s ease;
-  }
-
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:hover > a::after,
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item.has-focus > a::after,
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a:focus-visible::after,
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a.current-page::after {
-    transform: scaleX(1);
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:hover > a,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item.has-focus > a,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a:focus-visible,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a.current-page {
+    color: var(--nth-red);
   }
 
   /* Kept separate so browsers without :has() still apply the rule above. */
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(.current-page) > a::after {
-    transform: scaleX(1);
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(.current-page) > a {
+    color: var(--nth-red);
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item-has-children > a::after {
+    content: "";
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    margin-left: 0.5em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-0.25em) rotate(45deg);
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul {
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-top: 0;
     border-radius: 0 0 var(--nth-radius) var(--nth-radius);
     box-shadow: var(--nth-shadow);
   }
 
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item {
+    background: #fff;
+  }
+
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link {
-    transition: box-shadow 0.15s ease, background-color 0.15s ease;
+    color: var(--nth-ink);
+    border-color: #e9e9e9;
+    transition: color 0.15s ease, background-color 0.15s ease;
   }
 
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link:hover,
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link:focus-visible,
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link.current-page {
-    box-shadow: inset 4px 0 0 var(--nth-red-bright);
+    color: var(--nth-red);
+    background: var(--nth-red-tint);
+    text-decoration: none;
+  }
+
+  /* The theme's icons are white SVGs; darken them for the white bar. */
+  .washu-main-menu-wrapper .nav-search img,
+  .washu-main-menu-wrapper .desktop-search-close img {
+    filter: brightness(0);
+    opacity: 0.6;
+    transition: opacity 0.15s ease;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-content .nav-search:hover {
+    background: transparent;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search input.search-field {
+    color: var(--nth-ink);
+  }
+
+  .washu-main-menu-wrapper .nav-search:hover img,
+  .washu-main-menu-wrapper .desktop-search-close:hover img {
+    opacity: 1;
+  }
+
+  .washu-main-menu-wrapper .priority-nav-has-dropdown .priority-nav-dropdown-toggle {
+    color: var(--nth-ink);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .washu-main-menu-wrapper .priority-nav-has-dropdown .priority-nav-dropdown-toggle::after {
+    filter: brightness(0);
+    opacity: 0.6;
+  }
+
+  .washu-main-menu-wrapper .priority-nav-has-dropdown .priority-nav-dropdown-toggle:hover,
+  .washu-main-menu-wrapper .priority-nav-has-dropdown .priority-nav-dropdown-toggle.is-open {
+    color: var(--nth-red);
+    background: transparent;
+    border-top-color: transparent;
+    text-decoration: none;
+  }
+
+  /* Store sits at the top level as the menu's call to action. */
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(> a[href$="/store/"]) {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a[href$="/store/"] {
+    padding: 8px 18px;
+    color: #fff;
+    background: var(--nth-red);
+    border-radius: var(--nth-radius);
+    transition: background-color 0.15s ease;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a[href$="/store/"]:hover,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a[href$="/store/"]:focus-visible {
+    color: #fff;
+    background: var(--nth-red-bright);
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a[href$="/store/"].current-page {
+    color: #fff;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a::after,
-  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link {
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a.menu-item-link,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link,
+  .washu-main-menu-wrapper .nav-search img {
     transition: none;
   }
 }
@@ -173,7 +271,7 @@ body.home .latest-posts-grid .entry-excerpt {
 
 body.page-id-1605 .washu-ppi-results {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
@@ -200,7 +298,6 @@ body.page-id-1605 .washu-ppi-card:focus-within {
 body.page-id-1605 .washu-ppi-card > a.entry-title-link {
   display: block;
   width: 100%;
-  background: #fff;
   border-bottom: 1px solid var(--nth-rule);
 }
 
@@ -208,10 +305,10 @@ body.page-id-1605 .washu-ppi-card img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  padding: 16px;
-  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
 }
 
 body.page-id-1605 .washu-ppi-card > div {
@@ -248,6 +345,12 @@ body.page-id-1605 .washu-ppi-card .summary em {
   color: var(--nth-red);
   background: var(--nth-red-tint);
   border-radius: var(--nth-radius);
+}
+
+@media (max-width: 900px) {
+  body.page-id-1605 .washu-ppi-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -297,6 +400,11 @@ body.home .frm_forms {
   border: 1px solid var(--nth-rule);
   border-top: 4px solid var(--nth-red);
   border-radius: var(--nth-radius);
+}
+
+body.single-items .frm_forms .frm_form_fields,
+body.home .frm_forms .frm_form_fields {
+  margin-bottom: 0;
 }
 
 body.single-items .frm_forms input[type="text"],
