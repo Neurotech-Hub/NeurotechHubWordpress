@@ -12,6 +12,163 @@
   --nth-shadow: 0 6px 18px rgba(61, 61, 61, 0.12);
 }
 
+/* ---------- Site-wide: content images ---------- */
+
+/* Header banner and logos sit outside these containers and stay square. */
+.page-content img,
+.entry-content img,
+.wp-block-embed iframe {
+  border-radius: var(--nth-radius);
+}
+
+/* ---------- Site-wide: main menu (desktop) ---------- */
+
+/* Matches the theme's desktop menu breakpoint; the mobile menu is untouched. */
+@media screen and (min-width: 56.25em) {
+  .washu-main-menu-wrapper {
+    box-shadow: inset 0 -2px 0 var(--nth-red);
+  }
+
+  .washu-main-menu-wrapper .current-page {
+    text-decoration: none;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: var(--nth-red-bright);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:hover > a::after,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item.has-focus > a::after,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a:focus-visible::after,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a.current-page::after {
+    transform: scaleX(1);
+  }
+
+  /* Kept separate so browsers without :has() still apply the rule above. */
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(.current-page) > a::after {
+    transform: scaleX(1);
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul {
+    border-radius: 0 0 var(--nth-radius) var(--nth-radius);
+    box-shadow: var(--nth-shadow);
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link {
+    transition: box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link:hover,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link:focus-visible,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link.current-page {
+    box-shadow: inset 4px 0 0 var(--nth-red-bright);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item > a::after,
+  .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item ul li.menu-item .menu-item-link {
+    transition: none;
+  }
+}
+
+/* ---------- Home page ---------- */
+
+/* "What we do": the only columns block that directly follows a heading. */
+body.home .page-content > h2 + .wp-block-columns > .wp-block-column {
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid var(--nth-rule);
+  border-top: 4px solid var(--nth-red);
+  border-radius: var(--nth-radius);
+}
+
+body.home .page-content > h2 + .wp-block-columns > .wp-block-column > p:first-child {
+  margin-top: 0;
+  color: var(--nth-red);
+}
+
+body.home .page-content > h2 + .wp-block-columns > .wp-block-column > ul:last-child {
+  margin-bottom: 0;
+}
+
+body.home .wp-block-embed iframe {
+  box-shadow: var(--nth-shadow);
+}
+
+/* Faint PCB-style grid with pads at the intersections. */
+body.home .washu-billboard {
+  border-radius: var(--nth-radius);
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.10) 1.5px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -14px -14px, 0 0, 0 0;
+}
+
+/* "Our work" latest-posts grid. */
+body.home .latest-posts-grid .grid-item > article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--nth-rule);
+  border-radius: var(--nth-radius);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+body.home .latest-posts-grid .grid-item > article:hover,
+body.home .latest-posts-grid .grid-item > article:focus-within {
+  border-color: var(--nth-red);
+  box-shadow: var(--nth-shadow);
+  transform: translateY(-2px);
+}
+
+body.home .latest-posts-grid .entry-thumbnail {
+  overflow: hidden;
+  border-bottom: 1px solid var(--nth-rule);
+}
+
+body.home .latest-posts-grid .entry-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  transition: transform 0.4s ease;
+}
+
+body.home .latest-posts-grid .grid-item > article:hover .entry-thumbnail img {
+  transform: scale(1.04);
+}
+
+body.home .latest-posts-grid .entry-excerpt {
+  padding-bottom: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home .latest-posts-grid .grid-item > article,
+  body.home .latest-posts-grid .entry-thumbnail img {
+    transition: none;
+  }
+
+  body.home .latest-posts-grid .grid-item > article:hover,
+  body.home .latest-posts-grid .grid-item > article:focus-within,
+  body.home .latest-posts-grid .grid-item > article:hover .entry-thumbnail img {
+    transform: none;
+  }
+}
+
 /* ---------- Store listing (/store/) ---------- */
 
 body.page-id-1605 .washu-ppi-results {
@@ -132,7 +289,9 @@ body.single-items #buy {
   border-top: 1px solid var(--nth-rule);
 }
 
-body.single-items .frm_forms {
+/* Form panel styles are shared with the home page newsletter signup. */
+body.single-items .frm_forms,
+body.home .frm_forms {
   padding: 32px;
   background: var(--nth-surface);
   border: 1px solid var(--nth-rule);
@@ -144,7 +303,9 @@ body.single-items .frm_forms input[type="text"],
 body.single-items .frm_forms input[type="email"],
 body.single-items .frm_forms input[type="number"],
 body.single-items .frm_forms select,
-body.single-items .frm_forms textarea {
+body.single-items .frm_forms textarea,
+body.home .frm_forms input[type="text"],
+body.home .frm_forms input[type="email"] {
   background: #fff;
   border: 1px solid var(--nth-rule);
   border-radius: var(--nth-radius);
@@ -152,7 +313,8 @@ body.single-items .frm_forms textarea {
 
 body.single-items .frm_forms input:focus,
 body.single-items .frm_forms select:focus,
-body.single-items .frm_forms textarea:focus {
+body.single-items .frm_forms textarea:focus,
+body.home .frm_forms input:focus {
   border-color: var(--nth-red);
   outline: 2px solid var(--nth-red-tint);
 }
@@ -167,20 +329,24 @@ body.single-items .frm_total_formatted {
   color: var(--nth-red);
 }
 
-body.single-items .frm_button_submit {
+body.single-items .frm_button_submit,
+body.home .frm_button_submit {
   padding: 12px 32px;
   font-size: 1.1rem;
   font-weight: 600;
 }
 
 body.single-items .frm_button_submit:hover,
-body.single-items .frm_button_submit:focus {
+body.single-items .frm_button_submit:focus,
+body.home .frm_button_submit:hover,
+body.home .frm_button_submit:focus {
   background: var(--nth-red-bright);
   border-color: var(--nth-red-bright);
 }
 
 @media (max-width: 640px) {
-  body.single-items .frm_forms {
+  body.single-items .frm_forms,
+  body.home .frm_forms {
     padding: 20px;
   }
 }
