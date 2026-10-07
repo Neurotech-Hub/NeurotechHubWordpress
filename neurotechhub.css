@@ -723,9 +723,12 @@ body.single-items #buy {
   color: var(--nth-ink);
 }
 
-/* "Departments Engaged": min-content breaks at every space, giving one word per line. */
+/* "Departments Engaged": min-content breaks at every space, giving one word per line.
+   The theme's break-word would otherwise let min-content split inside words. */
 .page-content .impact > .wp-block-column:nth-child(2) p {
   width: min-content;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 /* WordPress stacks columns below 782px: switch the dividers to horizontal rules. */
