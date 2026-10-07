@@ -429,6 +429,42 @@ body.home .wp-block-embed iframe {
   box-shadow: var(--nth-shadow);
 }
 
+/* Hero video: the first YouTube embed breaks out of the content column to span the viewport.
+   The theme's padding-hack sizing is replaced by an aspect ratio so the height can be capped. */
+body.home {
+  overflow-x: clip;
+}
+
+body.home .site-content:has(.page-content > figure.wp-block-embed-youtube:first-child) {
+  margin-top: 0;
+}
+
+body.home .page-content > figure.wp-block-embed-youtube:first-child {
+  width: 100vw;
+  max-width: none;
+  margin: 0 0 40px calc(50% - 50vw);
+}
+
+body.home .page-content > figure.wp-block-embed-youtube:first-child .wp-block-embed__wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 80vh;
+  background: #000;
+}
+
+body.home .page-content > figure.wp-block-embed-youtube:first-child .wp-block-embed__wrapper::before {
+  content: none;
+}
+
+body.home .page-content > figure.wp-block-embed-youtube:first-child iframe {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /* Faint PCB-style grid with pads at the intersections. */
 body.home .washu-billboard {
   border-radius: var(--nth-radius);
