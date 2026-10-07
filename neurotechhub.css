@@ -653,3 +653,87 @@ body.single-items #buy {
   padding-top: 0.75em;
   border-top: 1px solid var(--nth-rule);
 }
+/* ---------- Impact stats (columns block with class "impact") ---------- */
+
+.page-content .wp-block-columns.impact {
+  gap: 0;
+  margin: 2rem 0;
+  padding: 28px 8px;
+  background: var(--nth-surface);
+  border: 1px solid #ececec;
+  border-radius: var(--nth-radius);
+}
+
+.page-content .impact > .wp-block-column {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icon number"
+    "icon label";
+  column-gap: 18px;
+  align-content: center;
+  padding: 4px 28px;
+}
+
+.page-content .impact > .wp-block-column + .wp-block-column {
+  border-left: 1px solid var(--nth-rule);
+}
+
+/* Icons: Lucide (ISC license), masked so the colour is set here. Order: tools, departments, groups. */
+.page-content .impact > .wp-block-column::before {
+  content: "";
+  grid-area: icon;
+  align-self: start;
+  width: 34px;
+  height: 34px;
+  margin-top: 14px;
+  background-color: #8a8a8a;
+  -webkit-mask: var(--impact-icon) center / contain no-repeat;
+  mask: var(--impact-icon) center / contain no-repeat;
+}
+
+.page-content .impact > .wp-block-column:nth-child(1) {
+  --impact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 16 4-4-4-4'/%3E%3Cpath d='m6 8-4 4 4 4'/%3E%3Cpath d='m14.5 4-5 16'/%3E%3C/svg%3E");
+}
+
+.page-content .impact > .wp-block-column:nth-child(2) {
+  --impact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z'/%3E%3Cpath d='M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2'/%3E%3Cpath d='M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2'/%3E%3Cpath d='M10 6h4'/%3E%3Cpath d='M10 10h4'/%3E%3Cpath d='M10 14h4'/%3E%3Cpath d='M10 18h4'/%3E%3C/svg%3E");
+}
+
+.page-content .impact > .wp-block-column:nth-child(3) {
+  --impact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+}
+
+.page-content .impact h3.wp-block-heading {
+  grid-area: number;
+  margin: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: normal;
+  color: var(--nth-red);
+}
+
+.page-content .impact p {
+  grid-area: label;
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nth-ink);
+}
+
+/* WordPress stacks columns below 782px: switch the dividers to horizontal rules. */
+@media (max-width: 781px) {
+  .page-content .impact > .wp-block-column {
+    padding: 16px 20px;
+  }
+
+  .page-content .impact > .wp-block-column + .wp-block-column {
+    border-left: 0;
+    border-top: 1px solid var(--nth-rule);
+  }
+}
