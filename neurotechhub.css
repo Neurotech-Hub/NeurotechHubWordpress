@@ -705,7 +705,7 @@ body.single-items #buy {
   grid-area: number;
   margin: 0;
   font-family: var(--nth-serif);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: var(--impact-number);
   font-weight: 400;
   line-height: 1;
   letter-spacing: normal;
