@@ -658,10 +658,6 @@ body.single-items #buy {
 .page-content .wp-block-columns.impact {
   gap: 0;
   margin: 2rem 0;
-  padding: 28px 8px;
-  background: var(--nth-surface);
-  border: 1px solid #ececec;
-  border-radius: var(--nth-radius);
 }
 
 .page-content .impact > .wp-block-column {
