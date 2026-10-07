@@ -661,6 +661,7 @@ body.single-items #buy {
 }
 
 .page-content .impact > .wp-block-column {
+  --impact-number: clamp(3.25rem, 7vw, 5rem);
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas:
@@ -682,7 +683,7 @@ body.single-items #buy {
   align-self: start;
   width: 34px;
   height: 34px;
-  margin-top: 14px;
+  margin-top: calc((var(--impact-number) - 34px) / 2);
   background-color: #8a8a8a;
   -webkit-mask: var(--impact-icon) center / contain no-repeat;
   mask: var(--impact-icon) center / contain no-repeat;
