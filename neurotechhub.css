@@ -714,13 +714,18 @@ body.single-items #buy {
 
 .page-content .impact p {
   grid-area: label;
-  margin: 8px 0 0;
-  font-size: 0.8rem;
+  margin: 10px 0 0;
+  font-size: 1.05rem;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.4;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--nth-ink);
+}
+
+/* "Departments Engaged": min-content breaks at every space, giving one word per line. */
+.page-content .impact > .wp-block-column:nth-child(2) p {
+  width: min-content;
 }
 
 /* WordPress stacks columns below 782px: switch the dividers to horizontal rules. */
