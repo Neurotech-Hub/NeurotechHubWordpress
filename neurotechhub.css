@@ -78,6 +78,15 @@
   opacity: 0.85;
 }
 
+/* ---------- Blog posts ---------- */
+
+/* Match the full-width page template's column (theme default for posts is 66%). */
+@media (min-width: 61.5em) {
+  .single-post .site-content .content-area {
+    width: 83%;
+  }
+}
+
 /* ---------- Site-wide: Formidable forms ---------- */
 
 .frm_forms {
