@@ -419,7 +419,7 @@
 /* ---------- Home page ---------- */
 
 /* "What we do": the only columns block that directly follows a heading. */
-body.home .page-content > h2 + .wp-block-columns > .wp-block-column {
+body.home .page-content > h2 + .wp-block-columns:not(.nth-services) > .wp-block-column {
   padding: 20px 24px;
   background: #fff;
   border: 1px solid var(--nth-rule);
@@ -427,12 +427,12 @@ body.home .page-content > h2 + .wp-block-columns > .wp-block-column {
   border-radius: var(--nth-radius);
 }
 
-body.home .page-content > h2 + .wp-block-columns > .wp-block-column > p:first-child {
+body.home .page-content > h2 + .wp-block-columns:not(.nth-services) > .wp-block-column > p:first-child {
   margin-top: 0;
   color: var(--nth-red);
 }
 
-body.home .page-content > h2 + .wp-block-columns > .wp-block-column > ul:last-child {
+body.home .page-content > h2 + .wp-block-columns:not(.nth-services) > .wp-block-column > ul:last-child {
   margin-bottom: 0;
 }
 
@@ -478,13 +478,50 @@ body.home .page-content > figure.wp-block-embed-youtube:first-child iframe {
 
 /* Faint PCB-style grid with pads at the intersections. */
 body.home .washu-billboard {
-  border-radius: var(--nth-radius);
+  border-radius: 16px;
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.10) 1.5px, transparent 2px),
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
   background-position: -14px -14px, 0 0, 0 0;
+}
+
+body.home .washu-billboard.has-red-background-color {
+  padding: clamp(40px, 6vw, 72px) clamp(24px, 5vw, 64px);
+}
+
+body.home .washu-billboard.has-red-background-color h2.wp-block-heading {
+  margin-top: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: normal;
+}
+
+body.home .washu-billboard.has-red-background-color p {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.15rem;
+}
+
+body.home .washu-billboard.has-red-background-color .wp-block-button .wp-block-button__link {
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--nth-red);
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: var(--nth-radius);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+body.home .washu-billboard.has-red-background-color .wp-block-button .wp-block-button__link:hover,
+body.home .washu-billboard.has-red-background-color .wp-block-button .wp-block-button__link:focus-visible {
+  color: #fff;
+  background: transparent;
 }
 
 /* "Our work" latest-posts grid. */
@@ -495,7 +532,7 @@ body.home .latest-posts-grid .grid-item > article {
   overflow: hidden;
   background: #fff;
   border: 1px solid var(--nth-rule);
-  border-radius: var(--nth-radius);
+  border-radius: 12px;
   transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -524,7 +561,13 @@ body.home .latest-posts-grid .grid-item > article:hover .entry-thumbnail img {
 }
 
 body.home .latest-posts-grid .entry-excerpt {
-  padding-bottom: 16px;
+  display: -webkit-box;
+  margin-bottom: 16px;
+  padding-bottom: 0;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -751,5 +794,953 @@ body.single-items #buy {
   .page-content .impact > .wp-block-column + .wp-block-column {
     border-left: 0;
     border-top: 1px solid var(--nth-rule);
+  }
+}
+
+/* ---------- Page sections (hooks set in each block's "Additional CSS class(es)") ---------- */
+
+.page-content .nth-eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nth-red);
+}
+
+.page-content .nth-more-link {
+  margin: 24px 0 0;
+  font-weight: 600;
+}
+
+.page-content .nth-more-link a {
+  color: var(--nth-red);
+  text-decoration: none;
+}
+
+.page-content .nth-more-link a:hover,
+.page-content .nth-more-link a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Arrow from Lucide (ISC license). */
+.page-content .nth-more-link a::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.4em;
+  vertical-align: -0.15em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.2s ease;
+}
+
+.page-content .nth-more-link a:hover::after,
+.page-content .nth-more-link a:focus-visible::after {
+  transform: translateX(4px);
+}
+
+/* Hero: a Cover block (class "nth-hero") that spans the viewport, text bottom-left on the content column.
+   Works with an image or a looping video background. */
+body:has(.nth-hero) {
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.nth-hero) {
+    scroll-behavior: smooth;
+  }
+}
+
+/* "Watch the film" jumps to the heading with id "film"; leave breathing room above it. */
+.page-content #film {
+  scroll-margin-top: 32px;
+}
+
+.site-content:has(.page-content > .nth-hero:first-child) {
+  margin-top: 0;
+}
+
+.page-content .wp-block-cover.nth-hero {
+  /* Lines the text up with the header's 1136px container (4vw gutters on smaller screens). */
+  --nth-hero-gutter: max(4vw, calc(50vw - 568px));
+  width: 100vw;
+  max-width: none;
+  margin: 0 0 56px calc(50% - 50vw);
+  padding: 72px var(--nth-hero-gutter) clamp(48px, 7vw, 88px);
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  color: #fff;
+}
+
+.page-content .nth-hero .wp-block-cover__image-background,
+.page-content .nth-hero .wp-block-cover__video-background {
+  border-radius: 0;
+}
+
+.page-content .nth-hero .wp-block-cover__image-background {
+  animation: nth-hero-drift 24s ease-out both;
+}
+
+.page-content .wp-block-cover.nth-hero .wp-block-cover__background {
+  opacity: 0.3;
+}
+
+/* Gradient for legibility; sits above the media and below the text. */
+.page-content .wp-block-cover.nth-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0) 75%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 65%);
+  pointer-events: none;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container {
+  z-index: 1;
+  max-width: 46rem;
+  margin: 0;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container > * {
+  animation: nth-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* If "Inner blocks use content width" is switched on, WordPress centres each child with !important. */
+.page-content .nth-hero .wp-block-cover__inner-container.is-layout-constrained > * {
+  margin-left: 0 !important;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container > :nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container > :nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container > :nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+.page-content .nth-hero .nth-eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.page-content .nth-hero h2.nth-hero-title {
+  margin: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(2.75rem, 1.6rem + 4vw, 5.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+}
+
+.page-content .nth-hero .nth-hero-text {
+  max-width: 34rem;
+  margin: 20px 0 32px;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
+}
+
+.page-content .nth-hero .nth-hero-text:first-child {
+  margin-top: 0;
+}
+
+.page-content .nth-hero .wp-block-buttons {
+  gap: 12px;
+}
+
+/* Centred variant (add "nth-hero-center" next to "nth-hero"): text sits a little below the middle
+   of the video, over a vignette that darkens behind it. */
+.page-content .wp-block-cover.nth-hero.nth-hero-center {
+  padding-top: clamp(120px, 16vw, 220px);
+  padding-bottom: clamp(48px, 6vw, 88px);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page-content .wp-block-cover.nth-hero.nth-hero-center .wp-block-cover__background {
+  opacity: 0.42;
+}
+
+.page-content .wp-block-cover.nth-hero.nth-hero-center::after {
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 62%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 35%);
+}
+
+.page-content .nth-hero.nth-hero-center .wp-block-cover__inner-container {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.page-content .nth-hero.nth-hero-center .wp-block-cover__inner-container.is-layout-constrained > * {
+  margin-left: auto !important;
+}
+
+.page-content .nth-hero.nth-hero-center .nth-hero-text {
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
+
+.page-content .nth-hero.nth-hero-center .wp-block-buttons {
+  justify-content: center;
+}
+
+/* Selectors outrank the theme's transparent buttons inside covers. */
+.page-content .nth-hero .wp-block-cover__inner-container .wp-block-button .wp-block-button__link {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: 2px solid var(--nth-red);
+  border-radius: var(--nth-radius);
+  background: var(--nth-red);
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container .wp-block-button .wp-block-button__link:hover,
+.page-content .nth-hero .wp-block-cover__inner-container .wp-block-button .wp-block-button__link:focus-visible {
+  background: var(--nth-red-bright);
+  border-color: var(--nth-red-bright);
+  color: #fff;
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container .wp-block-button.is-style-outline .wp-block-button__link {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.page-content .nth-hero .wp-block-cover__inner-container .wp-block-button.is-style-outline .wp-block-button__link:hover,
+.page-content .nth-hero .wp-block-cover__inner-container .wp-block-button.is-style-outline .wp-block-button__link:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: var(--nth-ink);
+}
+
+/* Play icon from Lucide (ISC license). */
+.page-content .nth-play .wp-block-button__link::before {
+  content: "";
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+  vertical-align: -0.25em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z'/%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z'/%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+@keyframes nth-hero-drift {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes nth-rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Service cards: columns block "nth-services"; each column's class picks its icon. */
+.page-content .wp-block-columns.nth-services {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+}
+
+.page-content .nth-services > .wp-block-column {
+  position: relative;
+  margin: 0;
+  padding: 28px 24px 24px;
+  background: #fff;
+  border: 1px solid var(--nth-rule);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.page-content .nth-services > .wp-block-column:hover {
+  border-color: var(--nth-red);
+  box-shadow: var(--nth-shadow);
+  transform: translateY(-3px);
+}
+
+/* Icon chip: ::before is the tile, ::after the masked icon on top of it. */
+.page-content .nth-services > .wp-block-column::before {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: var(--nth-red-tint);
+  transition: background-color 0.2s ease;
+}
+
+.page-content .nth-services > .wp-block-column::after {
+  content: "";
+  position: absolute;
+  top: 41px;
+  left: 37px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--nth-red);
+  -webkit-mask: var(--nth-icon) center / contain no-repeat;
+  mask: var(--nth-icon) center / contain no-repeat;
+  transition: background-color 0.2s ease;
+}
+
+.page-content .nth-services > .wp-block-column:hover::before {
+  background: var(--nth-red);
+}
+
+.page-content .nth-services > .wp-block-column:hover::after {
+  background-color: #fff;
+}
+
+/* Icons from Lucide (ISC license): cpu, box, layers, graduation-cap. */
+.page-content .nth-services > .nth-icon-electronics {
+  --nth-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20v2'/%3E%3Cpath d='M12 2v2'/%3E%3Cpath d='M17 20v2'/%3E%3Cpath d='M17 2v2'/%3E%3Cpath d='M2 12h2'/%3E%3Cpath d='M2 17h2'/%3E%3Cpath d='M2 7h2'/%3E%3Cpath d='M20 12h2'/%3E%3Cpath d='M20 17h2'/%3E%3Cpath d='M20 7h2'/%3E%3Cpath d='M7 20v2'/%3E%3Cpath d='M7 2v2'/%3E%3Crect x='4' y='4' width='16' height='16' rx='2'/%3E%3Crect x='8' y='8' width='8' height='8' rx='1'/%3E%3C/svg%3E");
+}
+
+.page-content .nth-services > .nth-icon-3d {
+  --nth-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E");
+}
+
+.page-content .nth-services > .nth-icon-fabrication {
+  --nth-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z'/%3E%3Cpath d='M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12'/%3E%3Cpath d='M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17'/%3E%3C/svg%3E");
+}
+
+.page-content .nth-services > .nth-icon-training {
+  --nth-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E");
+}
+
+.page-content .nth-services h3.wp-block-heading {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--nth-ink);
+}
+
+.page-content .nth-services ul.wp-block-list {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.page-content .nth-services li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.page-content .nth-services li::marker {
+  color: var(--nth-red);
+}
+
+@media (max-width: 1000px) {
+  .page-content .wp-block-columns.nth-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .page-content .wp-block-columns.nth-services {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product showcase: a group "nth-products" wrapping the Store's PPI list block. */
+.page-content .nth-products .washu-ppi-results {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.page-content .nth-products .washu-ppi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--nth-rule);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.page-content .nth-products .washu-ppi-card:hover,
+.page-content .nth-products .washu-ppi-card:focus-within {
+  border-color: var(--nth-red);
+  box-shadow: var(--nth-shadow);
+  transform: translateY(-3px);
+}
+
+.page-content .nth-products .washu-ppi-card > a.entry-title-link {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: var(--nth-surface);
+  border-bottom: 1px solid var(--nth-rule);
+}
+
+.page-content .nth-products .washu-ppi-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.4s ease;
+}
+
+.page-content .nth-products .washu-ppi-card:hover img {
+  transform: scale(1.05);
+}
+
+.page-content .nth-products .washu-ppi-card > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: auto;
+  padding: 16px 18px 18px;
+}
+
+.page-content .nth-products .washu-ppi-card-link {
+  text-decoration: none;
+}
+
+.page-content .nth-products .washu-ppi-name {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.page-content .nth-products .summary {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.page-content .nth-products .summary p:first-child {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.page-content .nth-products .summary p:last-child {
+  margin: auto 0 0;
+  padding-top: 12px;
+}
+
+.page-content .nth-products .summary em {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--nth-red);
+  background: var(--nth-red-tint);
+  border-radius: var(--nth-radius);
+}
+
+.page-content .nth-products .washu-ppi-filters,
+.page-content .nth-products .navigation {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .page-content .nth-products .washu-ppi-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phones: a swipeable row instead of a tall stack. */
+@media (max-width: 560px) {
+  /* Makes cqw the text-column width, so the gutter can be used in scroll-padding. */
+  .page-content .nth-products {
+    container-type: inline-size;
+  }
+
+  .page-content .nth-products .washu-ppi-results {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 72%;
+    /* Full-bleed row; the padding keeps the first card on the text column. */
+    margin: 0 calc(50cqw - 50vw);
+    padding: 4px calc(50vw - 50cqw) 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 calc(50vw - 50cqw);
+  }
+
+  .page-content .nth-products .washu-ppi-card {
+    scroll-snap-align: start;
+  }
+}
+
+/* Testimonial: quote block "nth-testimonial". Keeps the theme's quote ornament above the text. */
+.page-content .wp-block-quote.nth-testimonial {
+  max-width: 860px;
+  margin: 88px auto;
+}
+
+.page-content .wp-block-quote.nth-testimonial p {
+  max-width: none;
+  margin: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--nth-ink);
+}
+
+.page-content .wp-block-quote.nth-testimonial cite {
+  display: block;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+
+.page-content .wp-block-quote.nth-testimonial cite::before {
+  content: none;
+}
+
+/* Newsletter: group "nth-newsletter" with signup on the left and a latest-issue card ("nth-issue"). */
+.page-content .wp-block-group.nth-newsletter {
+  margin: 72px 0;
+  padding: clamp(28px, 4vw, 56px);
+  background: var(--nth-surface);
+  border: 1px solid var(--nth-rule);
+  border-radius: 16px;
+}
+
+.page-content .nth-newsletter > .wp-block-columns {
+  gap: clamp(24px, 4vw, 56px);
+  margin: 0;
+  align-items: center !important;
+}
+
+.page-content .nth-newsletter h2.wp-block-heading {
+  margin: 0 0 12px;
+  font-family: var(--nth-serif);
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: normal;
+}
+
+/* The site-wide form card would double up inside the panel. */
+.page-content .nth-newsletter .frm_forms {
+  margin-top: 20px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.page-content .wp-block-group.nth-issue {
+  padding: 28px;
+  background: #fff;
+  border-top: 4px solid var(--nth-red);
+  border-radius: 12px;
+  box-shadow: var(--nth-shadow);
+}
+
+.page-content .nth-issue h3.wp-block-heading {
+  margin: 0 0 10px;
+  font-family: var(--nth-serif);
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.page-content .nth-issue p {
+  margin-top: 0;
+}
+
+.page-content .nth-issue .nth-more-link {
+  margin: 20px 0 6px;
+}
+
+.page-content .nth-issue .nth-archive-link {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.page-content .nth-issue .nth-archive-link a {
+  color: #6b6b6b;
+}
+
+/* About intro: the grey billboard whose lead paragraph has class "nth-vision". */
+.page-content .washu-billboard:has(> .nth-vision) {
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: 16px;
+}
+
+.page-content .washu-billboard > p.nth-vision {
+  margin: 0 0 20px;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.9rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--nth-ink);
+}
+
+.page-content .washu-billboard > p.nth-vision em {
+  color: var(--nth-red);
+}
+
+.page-content .washu-billboard:has(> .nth-vision) > p:not(.nth-vision) {
+  max-width: 72ch;
+  font-size: 1.1rem;
+}
+
+.page-content .washu-billboard:has(> .nth-vision) .wp-block-button .wp-block-button__link {
+  padding: 12px 26px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--nth-red);
+  border: 2px solid var(--nth-red);
+  border-radius: var(--nth-radius);
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.page-content .washu-billboard:has(> .nth-vision) .wp-block-button .wp-block-button__link:hover,
+.page-content .washu-billboard:has(> .nth-vision) .wp-block-button .wp-block-button__link:focus-visible {
+  background: var(--nth-red-bright);
+  border-color: var(--nth-red-bright);
+}
+
+/* Timeline: columns block "nth-timeline", one column per milestone (year as an H3). */
+.page-content .wp-block-columns.nth-timeline {
+  gap: 0;
+  margin: 1.5rem 0 3rem;
+}
+
+.page-content .nth-timeline > .wp-block-column {
+  position: relative;
+  padding: 36px 24px 0 0;
+  border-top: 2px solid var(--nth-rule);
+}
+
+.page-content .nth-timeline > .wp-block-column::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 3px solid var(--nth-red);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.page-content .nth-timeline > .wp-block-column:last-child::before {
+  background: var(--nth-red);
+}
+
+.page-content .nth-timeline h3.wp-block-heading {
+  margin: 0 0 8px;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--nth-red);
+}
+
+.page-content .nth-timeline p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Stacked columns: the line runs down the left instead. */
+@media (max-width: 781px) {
+  .page-content .nth-timeline > .wp-block-column {
+    padding: 0 0 28px 32px;
+    border-top: 0;
+    border-left: 2px solid var(--nth-rule);
+  }
+
+  .page-content .nth-timeline > .wp-block-column:last-child {
+    padding-bottom: 0;
+  }
+
+  .page-content .nth-timeline > .wp-block-column::before {
+    top: 2px;
+    left: -8px;
+  }
+}
+
+/* Meet the Director: columns block "nth-director" inside the blue billboard. */
+.page-content .washu-billboard:has(.nth-director) {
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: 16px;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.10) 1.5px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -14px -14px, 0 0, 0 0;
+  text-align: left;
+}
+
+.page-content .washu-billboard:has(.nth-director) > h2.wp-block-heading {
+  margin-top: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.page-content .wp-block-columns.nth-director {
+  gap: clamp(28px, 4vw, 56px);
+  align-items: flex-start;
+  margin: 0;
+}
+
+.page-content .nth-director-photo {
+  margin: 0;
+}
+
+.page-content .nth-director-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.page-content .nth-director .wp-block-quote {
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+/* The theme centres its quote ornament with auto margins. */
+.page-content .nth-director .wp-block-quote::before {
+  right: auto;
+  margin-left: 0;
+}
+
+.page-content .nth-director .wp-block-quote p {
+  margin: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.25rem);
+  font-style: normal;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.page-content .nth-director .wp-block-quote cite {
+  display: block;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  opacity: 0.85;
+}
+
+.page-content .nth-director .wp-block-quote cite::before {
+  content: none;
+}
+
+.page-content .nth-director .wp-block-column > p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.page-content .nth-director .nth-signature {
+  margin: 20px 0 0;
+}
+
+.page-content .nth-director .nth-signature img {
+  border-radius: 0;
+}
+
+@media (max-width: 781px) {
+  .page-content .nth-director-photo {
+    max-width: 320px;
+  }
+}
+
+/* Staff profile: the PPI single-person card. */
+.page-content .ppi-single-card-people {
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 28px;
+  border-radius: 12px;
+}
+
+.page-content .ppi-single-card-people img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.page-content .ppi-single-card-people .washu-ppi-name {
+  margin-top: 0;
+  font-family: var(--nth-serif);
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .page-content .ppi-single-card-people {
+    grid-template-columns: 1fr;
+  }
+
+  .page-content .ppi-single-card-people img {
+    max-width: 220px;
+  }
+}
+
+/* Steering committee: group "nth-committee" wrapping the PPI people list. */
+.page-content .nth-committee {
+  margin-bottom: 40px;
+}
+
+.page-content .nth-committee .washu-ppi-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.page-content .nth-committee .washu-ppi-card {
+  width: auto;
+  margin: 0;
+  padding: 20px 22px;
+  border-top: 3px solid var(--nth-red);
+  border-radius: 12px;
+}
+
+.page-content .nth-committee .washu-ppi-name {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.page-content .nth-committee .washu-ppi-description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #6b6b6b;
+}
+
+/* Scroll reveal where supported (Chrome, Edge, Safari 26+); elsewhere content simply shows.
+   Uses `translate` so the hover lifts (which use `transform`) still work. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .page-content .impact > .wp-block-column,
+    .page-content .nth-services > .wp-block-column,
+    .page-content .nth-products .washu-ppi-card,
+    .page-content .nth-testimonial,
+    .page-content .nth-newsletter,
+    .page-content .latest-posts-grid .grid-item {
+      animation: nth-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+
+    .page-content .impact > .wp-block-column:nth-child(2),
+    .page-content .nth-services > .wp-block-column:nth-child(2),
+    .page-content .nth-products .washu-ppi-card:nth-child(2),
+    .page-content .latest-posts-grid .grid-item:nth-child(2) {
+      animation-range: entry 10% cover 30%;
+    }
+
+    .page-content .impact > .wp-block-column:nth-child(3),
+    .page-content .nth-services > .wp-block-column:nth-child(3),
+    .page-content .nth-products .washu-ppi-card:nth-child(3),
+    .page-content .latest-posts-grid .grid-item:nth-child(3) {
+      animation-range: entry 20% cover 35%;
+    }
+
+    .page-content .nth-services > .wp-block-column:nth-child(4),
+    .page-content .nth-products .washu-ppi-card:nth-child(4) {
+      animation-range: entry 30% cover 40%;
+    }
+  }
+}
+
+@keyframes nth-reveal {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-content .nth-hero .wp-block-cover__image-background,
+  .page-content .nth-hero .wp-block-cover__inner-container > * {
+    animation: none;
+  }
+
+  .page-content .nth-more-link a::after,
+  .page-content .nth-services > .wp-block-column,
+  .page-content .nth-services > .wp-block-column::before,
+  .page-content .nth-services > .wp-block-column::after,
+  .page-content .nth-products .washu-ppi-card,
+  .page-content .nth-products .washu-ppi-card img {
+    transition: none;
+  }
+
+  .page-content .nth-services > .wp-block-column:hover,
+  .page-content .nth-products .washu-ppi-card:hover,
+  .page-content .nth-products .washu-ppi-card:focus-within,
+  .page-content .nth-products .washu-ppi-card:hover img {
+    transform: none;
   }
 }
