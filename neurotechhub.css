@@ -158,6 +158,10 @@
 
 /* Matches the theme's desktop menu breakpoint; the mobile menu is untouched. */
 @media screen and (min-width: 56.25em) {
+  .site-affiliation + .site-title {
+    padding-bottom: 0;
+  }
+
   .washu-main-menu-wrapper {
     background-color: #fff;
     padding: 6px 0;
@@ -318,7 +322,7 @@
   .washu-main-menu-wrapper .washu-main-menu-list > li.menu-item:has(> a[href$="/store/"]) {
     position: absolute;
     right: 0;
-    bottom: calc(100% + 31px);
+    bottom: calc(100% + 9px);
     margin: 0;
   }
 
