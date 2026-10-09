@@ -44,6 +44,68 @@
   line-height: 1.1;
 }
 
+/* ---------- Site-wide: footer ---------- */
+
+#colophon.footer {
+  padding: 24px 0;
+}
+
+#colophon .footer-widgets {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+}
+
+/* Contact details on one line: title, then each paragraph separated by a dot. */
+#colophon .site-contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  float: none;
+  width: auto;
+  margin: 0;
+}
+
+#colophon .site-contact .footer-widget-title {
+  margin: 0 20px 0 0;
+}
+
+#colophon .site-contact p {
+  margin: 0;
+}
+
+#colophon .site-contact p + p::before {
+  content: "·";
+  margin: 0 10px;
+  opacity: 0.6;
+}
+
+/* The widget holding only this stylesheet's <link> renders nothing; collapse its space.
+   A hidden <link> still applies. */
+#colophon .widget-wrapper:has(> .widget_custom_html:only-child .custom-html-widget > link:only-child) {
+  display: none;
+}
+
+#colophon .footer-copyright {
+  font-size: 0.875rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 781px) {
+  #colophon .site-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  #colophon .site-contact .footer-widget-title {
+    margin: 0 0 6px;
+  }
+
+  #colophon .site-contact p + p::before {
+    content: none;
+  }
+}
+
 /* ---------- Site-wide: Formidable forms ---------- */
 
 .frm_forms {
