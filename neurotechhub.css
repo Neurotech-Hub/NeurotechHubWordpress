@@ -1411,6 +1411,269 @@ body:has(.nth-hero) {
   color: #6b6b6b;
 }
 
+/* About intro: the grey billboard whose lead paragraph has class "nth-vision". */
+.page-content .washu-billboard:has(> .nth-vision) {
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: 16px;
+}
+
+.page-content .washu-billboard > p.nth-vision {
+  margin: 0 0 20px;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.9rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--nth-ink);
+}
+
+.page-content .washu-billboard > p.nth-vision em {
+  color: var(--nth-red);
+}
+
+.page-content .washu-billboard:has(> .nth-vision) > p:not(.nth-vision) {
+  max-width: 72ch;
+  font-size: 1.1rem;
+}
+
+.page-content .washu-billboard:has(> .nth-vision) .wp-block-button .wp-block-button__link {
+  padding: 12px 26px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--nth-red);
+  border: 2px solid var(--nth-red);
+  border-radius: var(--nth-radius);
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.page-content .washu-billboard:has(> .nth-vision) .wp-block-button .wp-block-button__link:hover,
+.page-content .washu-billboard:has(> .nth-vision) .wp-block-button .wp-block-button__link:focus-visible {
+  background: var(--nth-red-bright);
+  border-color: var(--nth-red-bright);
+}
+
+/* Timeline: columns block "nth-timeline", one column per milestone (year as an H3). */
+.page-content .wp-block-columns.nth-timeline {
+  gap: 0;
+  margin: 1.5rem 0 3rem;
+}
+
+.page-content .nth-timeline > .wp-block-column {
+  position: relative;
+  padding: 36px 24px 0 0;
+  border-top: 2px solid var(--nth-rule);
+}
+
+.page-content .nth-timeline > .wp-block-column::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 3px solid var(--nth-red);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.page-content .nth-timeline > .wp-block-column:last-child::before {
+  background: var(--nth-red);
+}
+
+.page-content .nth-timeline h3.wp-block-heading {
+  margin: 0 0 8px;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--nth-red);
+}
+
+.page-content .nth-timeline p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Stacked columns: the line runs down the left instead. */
+@media (max-width: 781px) {
+  .page-content .nth-timeline > .wp-block-column {
+    padding: 0 0 28px 32px;
+    border-top: 0;
+    border-left: 2px solid var(--nth-rule);
+  }
+
+  .page-content .nth-timeline > .wp-block-column:last-child {
+    padding-bottom: 0;
+  }
+
+  .page-content .nth-timeline > .wp-block-column::before {
+    top: 2px;
+    left: -8px;
+  }
+}
+
+/* Meet the Director: columns block "nth-director" inside the blue billboard. */
+.page-content .washu-billboard:has(.nth-director) {
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: 16px;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.10) 1.5px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -14px -14px, 0 0, 0 0;
+  text-align: left;
+}
+
+.page-content .washu-billboard:has(.nth-director) > h2.wp-block-heading {
+  margin-top: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.page-content .wp-block-columns.nth-director {
+  gap: clamp(28px, 4vw, 56px);
+  align-items: flex-start;
+  margin: 0;
+}
+
+.page-content .nth-director-photo {
+  margin: 0;
+}
+
+.page-content .nth-director-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.page-content .nth-director .wp-block-quote {
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+/* The theme centres its quote ornament with auto margins. */
+.page-content .nth-director .wp-block-quote::before {
+  right: auto;
+  margin-left: 0;
+}
+
+.page-content .nth-director .wp-block-quote p {
+  margin: 0;
+  font-family: var(--nth-serif);
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.25rem);
+  font-style: normal;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.page-content .nth-director .wp-block-quote cite {
+  display: block;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  opacity: 0.85;
+}
+
+.page-content .nth-director .wp-block-quote cite::before {
+  content: none;
+}
+
+.page-content .nth-director .wp-block-column > p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.page-content .nth-director .nth-signature {
+  margin: 20px 0 0;
+}
+
+.page-content .nth-director .nth-signature img {
+  border-radius: 0;
+}
+
+@media (max-width: 781px) {
+  .page-content .nth-director-photo {
+    max-width: 320px;
+  }
+}
+
+/* Staff profile: the PPI single-person card. */
+.page-content .ppi-single-card-people {
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 28px;
+  border-radius: 12px;
+}
+
+.page-content .ppi-single-card-people img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.page-content .ppi-single-card-people .washu-ppi-name {
+  margin-top: 0;
+  font-family: var(--nth-serif);
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .page-content .ppi-single-card-people {
+    grid-template-columns: 1fr;
+  }
+
+  .page-content .ppi-single-card-people img {
+    max-width: 220px;
+  }
+}
+
+/* Steering committee: group "nth-committee" wrapping the PPI people list. */
+.page-content .nth-committee {
+  margin-bottom: 40px;
+}
+
+.page-content .nth-committee .washu-ppi-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.page-content .nth-committee .washu-ppi-card {
+  width: auto;
+  margin: 0;
+  padding: 20px 22px;
+  border-top: 3px solid var(--nth-red);
+  border-radius: 12px;
+}
+
+.page-content .nth-committee .washu-ppi-name {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.page-content .nth-committee .washu-ppi-description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #6b6b6b;
+}
+
 /* Scroll reveal where supported (Chrome, Edge, Safari 26+); elsewhere content simply shows.
    Uses `translate` so the hover lifts (which use `transform`) still work. */
 @supports (animation-timeline: view()) {

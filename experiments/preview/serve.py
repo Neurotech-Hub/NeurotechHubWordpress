@@ -72,6 +72,9 @@ def live_snippets(contents):
         i = content.find("<div class='wp-block-latest-posts")
         if i != -1:
             snippets.setdefault("washu/latest-posts", content[i:balanced_div(content, i)])
+        i = content.find('<div class="washu-ppi-card ppi-single-card')
+        if i != -1:
+            snippets.setdefault("washu-ppi/ppi-single", content[i:balanced_div(content, i)])
         for m in re.finditer(r'<div class="frm_forms[^"]*" id="frm_form_(\d+)_container"', content):
             snippets.setdefault(f"formidable:{m.group(1)}", content[m.start():balanced_div(content, m.start())])
         for m in re.finditer(r"<div id='[^']+' class=\"ppi-list[^\"]*\" data-react-attributes='([^']*)'", content):
