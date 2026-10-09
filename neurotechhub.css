@@ -935,11 +935,12 @@ body:has(.nth-hero) {
 .page-content .nth-hero h2.nth-hero-title {
   margin: 0;
   font-family: var(--nth-serif);
-  font-size: clamp(3rem, 1.8rem + 5vw, 6.5rem);
+  font-size: clamp(2.75rem, 1.6rem + 4vw, 5.25rem);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.01em;
   color: #fff;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
 }
 
 .page-content .nth-hero .nth-hero-text {
@@ -948,6 +949,7 @@ body:has(.nth-hero) {
   font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem);
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
 }
 
 .page-content .nth-hero .nth-hero-text:first-child {
@@ -987,16 +989,10 @@ body:has(.nth-hero) {
   margin-left: auto !important;
 }
 
-.page-content .nth-hero.nth-hero-center h2.nth-hero-title {
-  font-size: clamp(2.75rem, 1.6rem + 4vw, 5.25rem);
-  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
-}
-
 .page-content .nth-hero.nth-hero-center .nth-hero-text {
   margin-left: auto;
   margin-right: auto;
   text-wrap: balance;
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
 }
 
 .page-content .nth-hero.nth-hero-center .wp-block-buttons {
