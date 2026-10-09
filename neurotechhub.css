@@ -958,11 +958,11 @@ body:has(.nth-hero) {
   gap: 12px;
 }
 
-/* Centred variant (add "nth-hero-center" next to "nth-hero"): the line becomes the headline,
-   set in the serif over a vignette that darkens the middle of the video. */
+/* Centred variant (add "nth-hero-center" next to "nth-hero"): text sits a little below the middle
+   of the video, over a vignette that darkens behind it. */
 .page-content .wp-block-cover.nth-hero.nth-hero-center {
-  padding-top: clamp(64px, 9vw, 112px);
-  padding-bottom: clamp(64px, 9vw, 112px);
+  padding-top: clamp(120px, 16vw, 220px);
+  padding-bottom: clamp(48px, 6vw, 88px);
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -974,7 +974,7 @@ body:has(.nth-hero) {
 
 .page-content .wp-block-cover.nth-hero.nth-hero-center::after {
   background:
-    radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(ellipse 65% 55% at 50% 62%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0) 100%),
     linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 35%);
 }
 
@@ -987,17 +987,16 @@ body:has(.nth-hero) {
   margin-left: auto !important;
 }
 
+.page-content .nth-hero.nth-hero-center h2.nth-hero-title {
+  font-size: clamp(2.75rem, 1.6rem + 4vw, 5.25rem);
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+}
+
 .page-content .nth-hero.nth-hero-center .nth-hero-text {
-  max-width: none;
-  margin: 0 auto 40px;
-  font-family: var(--nth-serif);
-  font-size: clamp(2rem, 1.1rem + 3vw, 3.75rem);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  margin-left: auto;
+  margin-right: auto;
   text-wrap: balance;
-  color: #fff;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
 }
 
 .page-content .nth-hero.nth-hero-center .wp-block-buttons {
