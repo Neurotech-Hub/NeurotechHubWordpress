@@ -958,6 +958,52 @@ body:has(.nth-hero) {
   gap: 12px;
 }
 
+/* Centred variant (add "nth-hero-center" next to "nth-hero"): the line becomes the headline,
+   set in the serif over a vignette that darkens the middle of the video. */
+.page-content .wp-block-cover.nth-hero.nth-hero-center {
+  padding-top: clamp(64px, 9vw, 112px);
+  padding-bottom: clamp(64px, 9vw, 112px);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page-content .wp-block-cover.nth-hero.nth-hero-center .wp-block-cover__background {
+  opacity: 0.42;
+}
+
+.page-content .wp-block-cover.nth-hero.nth-hero-center::after {
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 35%);
+}
+
+.page-content .nth-hero.nth-hero-center .wp-block-cover__inner-container {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.page-content .nth-hero.nth-hero-center .wp-block-cover__inner-container.is-layout-constrained > * {
+  margin-left: auto !important;
+}
+
+.page-content .nth-hero.nth-hero-center .nth-hero-text {
+  max-width: none;
+  margin: 0 auto 40px;
+  font-family: var(--nth-serif);
+  font-size: clamp(2rem, 1.1rem + 3vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.page-content .nth-hero.nth-hero-center .wp-block-buttons {
+  justify-content: center;
+}
+
 /* Selectors outrank the theme's transparent buttons inside covers. */
 .page-content .nth-hero .wp-block-cover__inner-container .wp-block-button .wp-block-button__link {
   padding: 14px 28px;
