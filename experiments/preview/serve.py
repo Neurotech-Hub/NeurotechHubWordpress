@@ -206,6 +206,26 @@ def render(markup, snippets):
         body,
     )
 
+    # Cover blocks with a YouTube background: the server swaps the figure for a muted, looping iframe.
+    def cover_embed(m):
+        vid = re.search(r"(?:youtu\.be/|v=|embed/)([\w-]{11})", m.group(1))
+        if not vid:
+            return placeholder(f"cover embed {m.group(1)}")
+        src = (
+            f"https://www.youtube.com/embed/{vid.group(1)}?feature=oembed&amp;autoplay=1&amp;mute=1&amp;loop=1"
+            f"&amp;controls=0&amp;modestbranding=1&amp;playsinline=1&amp;playlist={vid.group(1)}"
+        )
+        return (
+            '<div class="wp-block-cover__video-background wp-block-cover__embed-background">'
+            f'<iframe src="{src}" title="Background video" frameborder="0" allow="autoplay; fullscreen"></iframe></div>'
+        )
+
+    body = re.sub(
+        r'<figure class="wp-block-cover__video-background wp-block-cover__embed-background wp-block-embed">'
+        r'<div class="wp-block-embed__wrapper">\s*(\S+)\s*</div></figure>',
+        cover_embed,
+        body,
+    )
     body = re.sub(
         r'(<div class="wp-block-embed__wrapper">)\s*(https?://\S+)\s*(</div>)',
         lambda m: m.group(1) + youtube_iframe(m.group(2)) + m.group(3),
