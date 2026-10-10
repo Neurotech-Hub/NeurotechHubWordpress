@@ -635,6 +635,7 @@ body.page-id-1605 .washu-ppi-results {
 }
 
 body.page-id-1605 .washu-ppi-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -660,14 +661,23 @@ body.page-id-1605 .washu-ppi-card > a.entry-title-link {
   border-bottom: 1px solid var(--nth-rule);
 }
 
+/* The theme adds a bottom margin to this image on small screens. */
 body.page-id-1605 .washu-ppi-card img {
   display: block;
   width: 100%;
   height: auto;
+  margin: 0;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
   border-radius: 0;
+}
+
+/* The title link covers the whole card, so the price chip and description click through too. */
+body.page-id-1605 .washu-ppi-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 body.page-id-1605 .washu-ppi-card > div {
@@ -704,6 +714,13 @@ body.page-id-1605 .washu-ppi-card .summary em {
   color: var(--nth-red);
   background: var(--nth-red-tint);
   border-radius: var(--nth-radius);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+body.page-id-1605 .washu-ppi-card:hover .summary em,
+body.page-id-1605 .washu-ppi-card:focus-within .summary em {
+  color: #fff;
+  background: var(--nth-red);
 }
 
 @media (max-width: 900px) {
@@ -1228,6 +1245,7 @@ body:has(.nth-hero) {
 }
 
 .page-content .nth-products .washu-ppi-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1259,6 +1277,7 @@ body:has(.nth-hero) {
   display: block;
   width: 100%;
   height: auto;
+  margin: 0;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;
@@ -1279,6 +1298,12 @@ body:has(.nth-hero) {
 
 .page-content .nth-products .washu-ppi-card-link {
   text-decoration: none;
+}
+
+.page-content .nth-products .washu-ppi-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 .page-content .nth-products .washu-ppi-name {
@@ -1318,6 +1343,13 @@ body:has(.nth-hero) {
   color: var(--nth-red);
   background: var(--nth-red-tint);
   border-radius: var(--nth-radius);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.page-content .nth-products .washu-ppi-card:hover .summary em,
+.page-content .nth-products .washu-ppi-card:focus-within .summary em {
+  color: #fff;
+  background: var(--nth-red);
 }
 
 .page-content .nth-products .washu-ppi-filters,
