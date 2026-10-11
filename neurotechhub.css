@@ -661,8 +661,8 @@ body.page-id-1605 .washu-ppi-card > a.entry-title-link {
   border-bottom: 1px solid var(--nth-rule);
 }
 
-/* The theme adds a bottom margin to this image on small screens. */
-body.page-id-1605 .washu-ppi-card img {
+/* Outranks the theme's small-screen ".ppi-list-list .washu-ppi-card .ppi-image" bottom margin. */
+body.page-id-1605 .washu-ppi-card img.ppi-image {
   display: block;
   width: 100%;
   height: auto;
