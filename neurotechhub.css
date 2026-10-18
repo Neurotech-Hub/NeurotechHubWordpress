@@ -197,6 +197,16 @@
   }
 }
 
+/* Off the homepage the title is a link home. Keep the pointer; drop the theme's hover underline. */
+.site-title a,
+.site-title a:hover,
+.site-title a:focus-visible,
+.site-title a:visited,
+.site-title a:active {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* ---------- Site-wide: main menu (desktop) ---------- */
 
 /* Matches the theme's desktop menu breakpoint; the mobile menu is untouched. */
