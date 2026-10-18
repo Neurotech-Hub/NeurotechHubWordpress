@@ -101,6 +101,17 @@
   margin-bottom: 0;
 }
 
+/* Inputs have a large intrinsic width, and the fieldset's min-content size lets the
+   grid grow past the card on narrow screens. */
+.frm_forms,
+.frm_forms .frm_form_fields,
+.frm_forms fieldset,
+.frm_forms .frm_fields_container,
+.frm_forms .frm_form_field {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .frm_forms input[type="text"],
 .frm_forms input[type="email"],
 .frm_forms input[type="number"],
@@ -108,6 +119,8 @@
 .frm_forms input[type="url"],
 .frm_forms select,
 .frm_forms textarea {
+  width: 100%;
+  max-width: 100%;
   background: #fff;
   border: 1px solid var(--nth-rule);
   border-radius: var(--nth-radius);
@@ -142,6 +155,8 @@
 }
 
 .frm_forms input[type="file"] {
+  width: 100%;
+  max-width: 100%;
   color: var(--nth-ink);
 }
 
