@@ -927,6 +927,8 @@ body:has(.nth-hero) {
 .page-content .wp-block-cover.nth-hero {
   /* Lines the text up with the header's 1136px container (4vw gutters on smaller screens). */
   --nth-hero-gutter: max(4vw, calc(50vw - 568px));
+  /* Outranks the Cover block's inline min-height, so the live page can stay as pasted. */
+  min-height: 50vh !important;
   width: 100vw;
   max-width: none;
   margin: 0 0 56px calc(50% - 50vw);
