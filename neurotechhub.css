@@ -839,11 +839,6 @@ body.page-id-1605 .washu-ppi-card:focus-within .summary em {
 
 /* ---------- Product pages (/items/...) ---------- */
 
-body.single-items .washu-ppi-body-copy > p,
-body.single-items .washu-ppi-body-copy > ul {
-  max-width: 75ch;
-}
-
 body.single-items .washu-ppi-body-copy li {
   margin-bottom: 0.35em;
 }
