@@ -357,6 +357,72 @@
 
   .washu-main-menu-wrapper .desktop-search-active .header-search input.search-field {
     color: var(--nth-ink);
+    background: #fff;
+    border: 1px solid var(--nth-rule);
+    border-right: 0;
+    border-radius: var(--nth-radius) 0 0 var(--nth-radius);
+    padding: 8px 14px;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search input.search-field::placeholder {
+    color: #8a8a8a;
+    opacity: 1;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search input.search-field:focus {
+    border-color: var(--nth-red);
+    outline: none;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search button.search-submit {
+    background: var(--nth-red);
+    border-radius: 0 var(--nth-radius) var(--nth-radius) 0;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search button.search-submit:hover,
+  .washu-main-menu-wrapper .desktop-search-active .header-search button.search-submit:focus-visible {
+    background: var(--nth-red-bright);
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .desktop-search-close {
+    background: #fff;
+    border: 1px solid var(--nth-rule);
+    border-radius: var(--nth-radius);
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .desktop-search-close:hover,
+  .washu-main-menu-wrapper .desktop-search-active .desktop-search-close:focus-visible {
+    background: var(--nth-red-tint);
+    border-color: var(--nth-red);
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search .results .results-list {
+    padding: 6px;
+    background: #fff;
+    border: 1px solid var(--nth-rule);
+    border-radius: var(--nth-radius);
+    box-shadow: var(--nth-shadow);
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search .results .results-list a {
+    padding: 8px 10px;
+    color: var(--nth-ink);
+    border-radius: var(--nth-radius);
+    text-decoration: none;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search .results .results-list a:hover,
+  .washu-main-menu-wrapper .desktop-search-active .header-search .results .results-list a:focus-visible {
+    color: var(--nth-red);
+    background: var(--nth-red-tint);
+    text-decoration: none;
+  }
+
+  .washu-main-menu-wrapper .desktop-search-active .header-search .results .results-list a.see-all-results {
+    margin-top: 4px;
+    color: var(--nth-red);
+    font-weight: 600;
+    letter-spacing: 0.06em;
   }
 
   .washu-main-menu-wrapper .nav-search:hover img,
