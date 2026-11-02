@@ -1744,3 +1744,119 @@ body:has(.nth-hero) {
     transform: none;
   }
 }
+
+/* ---------- Site-wide: footer ---------- */
+
+footer.footer {
+  position: relative;
+  z-index: 0;
+  background-color: #000;
+}
+
+/* The theme centers the address below 61.5em and draws a grey rule under it. */
+footer.footer .footer-widgets,
+footer.footer .footer-widgets .site-contact,
+footer.footer .site-info {
+  text-align: left;
+}
+
+footer.footer .footer-widgets {
+  border-bottom: none;
+}
+
+/* Homepage only: the hero reel, placed in the footer markup, plays in the empty
+   space to the right of the address. A radial mask fades it into the black. */
+footer.footer .nth-footer-reel {
+  display: none;
+}
+
+body.home footer.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+body.home footer.footer .nth-footer-reel {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  width: 72%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 78% 150% at 68% 55%, #000 8%, transparent 70%);
+  mask-image: radial-gradient(ellipse 78% 150% at 68% 55%, #000 8%, transparent 70%);
+}
+
+/* Text stays above the reel. The reel and its link are positioned against the footer,
+   so the container itself must not be a containing block. */
+body.home footer.footer .site-contact,
+body.home footer.footer .site-info {
+  position: relative;
+  z-index: 1;
+}
+
+/* Play icon from Lucide (ISC license), same mark as the hero's "Watch the reel". */
+footer.footer .nth-footer-reel-link {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  font-size: 0;
+  color: transparent;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+footer.footer .nth-footer-reel-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #fff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z'/%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+footer.footer .nth-footer-reel-link:hover,
+footer.footer .nth-footer-reel-link:focus-visible {
+  opacity: 1;
+}
+
+footer.footer .nth-footer-reel-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+/* The address fills most of a phone, so the fade starts further right. */
+@media screen and (max-width: 40em) {
+  body.home footer.footer .nth-footer-reel {
+    width: 66%;
+    object-position: 70% center;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 36%, #000 74%);
+    mask-image: linear-gradient(to right, transparent 0%, transparent 36%, #000 74%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home footer.footer .nth-footer-reel {
+    display: none;
+  }
+}
+
+@media print {
+  footer.footer {
+    background-color: transparent;
+  }
+
+  body.home footer.footer .nth-footer-reel,
+  footer.footer .nth-footer-reel-link {
+    display: none;
+  }
+}
