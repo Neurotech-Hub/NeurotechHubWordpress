@@ -1620,13 +1620,15 @@ body:has(.nth-hero) {
 
 .page-content .nth-newsletter #mc_embed_signup #mce-error-response,
 .page-content .nth-newsletter #mc_embed_signup div.mce_inline_error {
-  display: block !important;
   color: var(--nth-red) !important;
   background: var(--nth-red-tint) !important;
   border-color: #e2b6b7;
 }
 
+/* Only force visibility for field errors Mailchimp injects; leave #mce-*-response
+   alone so their inline display:none stays until submit. */
 .page-content .nth-newsletter #mc_embed_signup div.mce_inline_error {
+  display: block !important;
   margin: 6px 0 0;
 }
 
