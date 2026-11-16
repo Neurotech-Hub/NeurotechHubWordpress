@@ -1532,13 +1532,78 @@ body:has(.nth-hero) {
   letter-spacing: normal;
 }
 
-/* The site-wide form card would double up inside the panel. */
-.page-content .nth-newsletter .frm_forms {
+/* Mailchimp embed inside the newsletter panel (replaces Formidable form 10). */
+.page-content .nth-newsletter .nth-mailchimp {
   margin-top: 20px;
-  padding: 0;
-  background: none;
-  border: 0;
-  border-radius: 0;
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  font: inherit;
+  color: var(--nth-ink);
+}
+
+.page-content .nth-newsletter .nth-mailchimp .indicates-required,
+.page-content .nth-newsletter .nth-mailchimp .mc-field-group {
+  margin: 0 0 14px;
+}
+
+.page-content .nth-newsletter .nth-mailchimp .mc-field-group label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.page-content .nth-newsletter .nth-mailchimp .asterisk {
+  color: var(--nth-red);
+}
+
+.page-content .nth-newsletter .nth-mailchimp input[type="text"],
+.page-content .nth-newsletter .nth-mailchimp input[type="email"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--nth-ink);
+  background: #fff;
+  border: 1px solid var(--nth-rule);
+  border-radius: var(--nth-radius);
+}
+
+.page-content .nth-newsletter .nth-mailchimp input[type="text"]:focus,
+.page-content .nth-newsletter .nth-mailchimp input[type="email"]:focus {
+  border-color: var(--nth-red);
+  outline: 2px solid var(--nth-red-tint);
+}
+
+.page-content .nth-newsletter .nth-mailchimp #mc-embedded-subscribe {
+  margin-top: 4px;
+  padding: 12px 28px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--nth-red);
+  border: 2px solid var(--nth-red);
+  border-radius: var(--nth-radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.page-content .nth-newsletter .nth-mailchimp #mc-embedded-subscribe:hover,
+.page-content .nth-newsletter .nth-mailchimp #mc-embedded-subscribe:focus-visible {
+  background: var(--nth-red-bright);
+  border-color: var(--nth-red-bright);
+}
+
+.page-content .nth-newsletter .nth-mailchimp #mce-responses {
+  margin: 0 0 8px;
+}
+
+.page-content .nth-newsletter .nth-mailchimp #mce-error-response,
+.page-content .nth-newsletter .nth-mailchimp #mce-success-response {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
 }
 
 .page-content .wp-block-group.nth-issue {

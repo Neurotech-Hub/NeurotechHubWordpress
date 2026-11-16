@@ -244,9 +244,51 @@
             <p>Subscribing is the <em>best</em> way to keep up with new tools, projects, and events from the Hub.</p>
             <!-- /wp:paragraph -->
 
-            <!-- wp:formidable/simple-form {"formId":"10"} -->
-            <div>[formidable id="10"]</div>
-            <!-- /wp:formidable/simple-form -->
+            <!-- wp:html -->
+            <div id="mc_embed_signup" class="nth-mailchimp">
+                <form
+                    action="https://wustl.us5.list-manage.com/subscribe/post?u=6391f76836f7cfd6d42fd5c61&amp;id=084d57d977&amp;f_id=00bc26ebf0"
+                    method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                    target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                        <div class="mc-field-group">
+                            <label for="mce-FNAME">First Name <span class="asterisk">*</span></label>
+                            <input type="text" name="FNAME" class="required text" id="mce-FNAME" required value="">
+                        </div>
+                        <div class="mc-field-group">
+                            <label for="mce-LNAME">Last Name <span class="asterisk">*</span></label>
+                            <input type="text" name="LNAME" class="required text" id="mce-LNAME" required value="">
+                        </div>
+                        <div class="mc-field-group">
+                            <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                            <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="">
+                        </div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>
+                        <div aria-hidden="true" style="position:absolute;left:-5000px">
+                            <input type="text" name="b_6391f76836f7cfd6d42fd5c61_084d57d977" tabindex="-1" value="">
+                        </div>
+                        <div class="clear">
+                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
+                                value="Subscribe">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+            <script>
+                (function ($) {
+                    window.fnames = new Array();
+                    window.ftypes = new Array();
+                    fnames[1] = 'FNAME'; ftypes[1] = 'text';
+                    fnames[2] = 'LNAME'; ftypes[2] = 'text';
+                    fnames[0] = 'EMAIL'; ftypes[0] = 'email';
+                }(jQuery));
+                var $mcj = jQuery.noConflict(true);
+            </script>
+            <!-- /wp:html -->
         </div>
         <!-- /wp:column -->
 
