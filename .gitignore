@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python (local preview server)
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+
+# Local preview caches (also listed under experiments/preview/)
+experiments/preview/shells/
+
+# Audience exports and generated imports (contain personal emails)
+*.csv
+mailchimp-import-*.csv
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+credentials.json
+*.pem
