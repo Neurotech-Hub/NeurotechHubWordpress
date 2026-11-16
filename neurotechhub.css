@@ -1532,8 +1532,9 @@ body:has(.nth-hero) {
   letter-spacing: normal;
 }
 
-/* Mailchimp embed inside the newsletter panel (replaces Formidable form 10). */
-.page-content .nth-newsletter .nth-mailchimp {
+/* Mailchimp embed inside the newsletter panel (replaces Formidable form 10).
+   Selectors include #mc_embed_signup so they outrank styles injected by mc-validate.js. */
+.page-content .nth-newsletter #mc_embed_signup.nth-mailchimp {
   margin-top: 20px;
   width: 100%;
   max-width: 100%;
@@ -1542,24 +1543,23 @@ body:has(.nth-hero) {
   color: var(--nth-ink);
 }
 
-.page-content .nth-newsletter .nth-mailchimp .indicates-required,
-.page-content .nth-newsletter .nth-mailchimp .mc-field-group {
+.page-content .nth-newsletter #mc_embed_signup .mc-field-group {
   margin: 0 0 14px;
 }
 
-.page-content .nth-newsletter .nth-mailchimp .mc-field-group label {
+.page-content .nth-newsletter #mc_embed_signup .mc-field-group label {
   display: block;
   margin: 0 0 6px;
   font-size: 0.95rem;
   font-weight: 600;
 }
 
-.page-content .nth-newsletter .nth-mailchimp .asterisk {
+.page-content .nth-newsletter #mc_embed_signup .asterisk {
   color: var(--nth-red);
 }
 
-.page-content .nth-newsletter .nth-mailchimp input[type="text"],
-.page-content .nth-newsletter .nth-mailchimp input[type="email"] {
+.page-content .nth-newsletter #mc_embed_signup input[type="text"],
+.page-content .nth-newsletter #mc_embed_signup input[type="email"] {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -1571,13 +1571,13 @@ body:has(.nth-hero) {
   border-radius: var(--nth-radius);
 }
 
-.page-content .nth-newsletter .nth-mailchimp input[type="text"]:focus,
-.page-content .nth-newsletter .nth-mailchimp input[type="email"]:focus {
+.page-content .nth-newsletter #mc_embed_signup input[type="text"]:focus,
+.page-content .nth-newsletter #mc_embed_signup input[type="email"]:focus {
   border-color: var(--nth-red);
   outline: 2px solid var(--nth-red-tint);
 }
 
-.page-content .nth-newsletter .nth-mailchimp #mc-embedded-subscribe {
+.page-content .nth-newsletter #mc_embed_signup #mc-embedded-subscribe {
   margin-top: 4px;
   padding: 12px 28px;
   font: inherit;
@@ -1590,51 +1590,51 @@ body:has(.nth-hero) {
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.page-content .nth-newsletter .nth-mailchimp #mc-embedded-subscribe:hover,
-.page-content .nth-newsletter .nth-mailchimp #mc-embedded-subscribe:focus-visible {
+.page-content .nth-newsletter #mc_embed_signup #mc-embedded-subscribe:hover,
+.page-content .nth-newsletter #mc_embed_signup #mc-embedded-subscribe:focus-visible {
   background: var(--nth-red-bright);
   border-color: var(--nth-red-bright);
 }
 
-/* Mailchimp's classic CSS is not loaded; without these, success/error text is easy to miss. */
-.page-content .nth-newsletter .nth-mailchimp #mce-responses {
+.page-content .nth-newsletter #mc_embed_signup #mce-responses {
   margin: 16px 0 0;
 }
 
-.page-content .nth-newsletter .nth-mailchimp #mce-error-response,
-.page-content .nth-newsletter .nth-mailchimp #mce-success-response {
+.page-content .nth-newsletter #mc_embed_signup #mce-error-response,
+.page-content .nth-newsletter #mc_embed_signup #mce-success-response {
   margin: 0;
   padding: 12px 14px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
   border-radius: var(--nth-radius);
 }
 
-.page-content .nth-newsletter .nth-mailchimp #mce-success-response {
-  color: #1f6b3a;
-  background: #e8f6ee;
+.page-content .nth-newsletter #mc_embed_signup #mce-success-response {
+  color: #1f6b3a !important;
+  background: #e8f6ee !important;
   border: 1px solid #b7dfc5;
 }
 
-.page-content .nth-newsletter .nth-mailchimp #mce-error-response {
-  color: var(--nth-red);
-  background: var(--nth-red-tint);
+.page-content .nth-newsletter #mc_embed_signup #mce-error-response {
+  color: var(--nth-red) !important;
+  background: var(--nth-red-tint) !important;
   border: 1px solid #e2b6b7;
 }
 
-.page-content .nth-newsletter .nth-mailchimp div.mce_inline_error {
-  display: block;
+.page-content .nth-newsletter #mc_embed_signup div.mce_inline_error {
+  display: block !important;
   margin: 6px 0 0;
-  padding: 0;
+  padding: 8px 10px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--nth-red);
-  background: transparent;
+  color: #fff !important;
+  background: var(--nth-red) !important;
+  border-radius: var(--nth-radius);
 }
 
-.page-content .nth-newsletter .nth-mailchimp input.mce_inline_error {
-  border-color: var(--nth-red);
+.page-content .nth-newsletter #mc_embed_signup input.mce_inline_error {
+  border-color: var(--nth-red) !important;
 }
 
 .page-content .wp-block-group.nth-issue {
