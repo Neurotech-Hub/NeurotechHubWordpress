@@ -1596,14 +1596,45 @@ body:has(.nth-hero) {
   border-color: var(--nth-red-bright);
 }
 
+/* Mailchimp's classic CSS is not loaded; without these, success/error text is easy to miss. */
 .page-content .nth-newsletter .nth-mailchimp #mce-responses {
-  margin: 0 0 8px;
+  margin: 16px 0 0;
 }
 
 .page-content .nth-newsletter .nth-mailchimp #mce-error-response,
 .page-content .nth-newsletter .nth-mailchimp #mce-success-response {
-  margin: 0 0 8px;
+  margin: 0;
+  padding: 12px 14px;
   font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: var(--nth-radius);
+}
+
+.page-content .nth-newsletter .nth-mailchimp #mce-success-response {
+  color: #1f6b3a;
+  background: #e8f6ee;
+  border: 1px solid #b7dfc5;
+}
+
+.page-content .nth-newsletter .nth-mailchimp #mce-error-response {
+  color: var(--nth-red);
+  background: var(--nth-red-tint);
+  border: 1px solid #e2b6b7;
+}
+
+.page-content .nth-newsletter .nth-mailchimp div.mce_inline_error {
+  display: block;
+  margin: 6px 0 0;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--nth-red);
+  background: transparent;
+}
+
+.page-content .nth-newsletter .nth-mailchimp input.mce_inline_error {
+  border-color: var(--nth-red);
 }
 
 .page-content .wp-block-group.nth-issue {
