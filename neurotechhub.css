@@ -624,8 +624,8 @@ body.home .page-content > figure.wp-block-embed-youtube:first-child iframe {
   line-height: 1.6;
 }
 
-/* Tables: the theme's dark header row and zebra stripes stay; corners round, the box lifts with
-   the card shadow, grid lines soften to row rules, and rows get a faint hover tint. */
+/* Tables: a darker header row with a red rule; corners round, the box lifts with the card
+   shadow, light row and column rules replace the heavy grid, and rows get a faint hover tint. */
 .entry-content .wp-block-table,
 .page-content .wp-block-table {
   margin-bottom: 2rem;
@@ -648,11 +648,21 @@ body.home .page-content > figure.wp-block-embed-youtube:first-child iframe {
   padding: 14px 18px;
   border: 0;
   border-bottom: 1px solid #e4e4e4;
+  border-right: 1px solid #e4e4e4;
+}
+
+.entry-content .wp-block-table th:last-child,
+.entry-content .wp-block-table td:last-child,
+.page-content .wp-block-table th:last-child,
+.page-content .wp-block-table td:last-child {
+  border-right: 0;
 }
 
 .entry-content .wp-block-table thead th,
 .page-content .wp-block-table thead th {
+  background-color: #222;
   border-bottom: 3px solid var(--nth-red);
+  border-right-color: rgba(255, 255, 255, 0.14);
 }
 
 .entry-content .wp-block-table tbody tr:last-child td,
